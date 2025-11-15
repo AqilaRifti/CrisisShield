@@ -156,7 +156,7 @@ export default function WeatherPage() {
                                 </Card.Header>
                                 <Card.Body>
                                     <p className="small">
-                    Heavy rainfall (>50mm/day) can cause flooding in low-lying areas.
+                                        Heavy rainfall (&gt;50mm/day) can cause flooding in low-lying areas.
                                         Monitor weather forecasts and prepare evacuation routes.
                                     </p>
                                     <Link href="/plans/create">
@@ -175,7 +175,7 @@ export default function WeatherPage() {
                                 </Card.Header>
                                 <Card.Body>
                                     <p className="small">
-                    Strong winds (>60 km/h) can damage structures and disrupt operations.
+                                        Strong winds (&gt;60 km/h) can damage structures and disrupt operations.
                                         Secure outdoor items and prepare backup power.
                                     </p>
                                     <Link href="/plans/create">
@@ -194,7 +194,7 @@ export default function WeatherPage() {
                                 </Card.Header>
                                 <Card.Body>
                                     <p className="small">
-                    Extreme heat (>40°C) can affect health and operations.
+                                        Extreme heat (&gt;40°C) can affect health and operations.
                                         Ensure adequate cooling and hydration for staff.
                                     </p>
                                     <Link href="/plans/create">
