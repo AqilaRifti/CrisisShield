@@ -28,14 +28,14 @@ export async function generateAIResponse(systemPrompt: string, userMessage: stri
       { role: "system", content: systemPrompt },
       { role: "user", content: userMessage }
     ],
-    model: 'qwen-3-235b-a22b-thinking-2507',
+    model: 'qwen-3-235b-a22b-instruct-2507',
     stream: false,
     max_completion_tokens: 65536,
     temperature: 0.6,
     top_p: 0.95
   }) as any
 
-  return response.choices[0]?.message?.content?.replace(/^[\s\S]*?<\/think>/, '') || ''
+  return response.choices[0]?.message?.content || ''
 }
 
 export async function generateAIResponseJson(systemPrompt: string, userMessage: string) {
