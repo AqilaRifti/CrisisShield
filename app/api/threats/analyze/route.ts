@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { currentUser } from '@clerk/nextjs/server'
 import { supabase } from '@/lib/supabase'
-import { getWeatherData } from '@/lib/external-apis/weather'
+import { getWeatherThreatAssessment, formatLocationString } from '@/lib/external-apis/weather'
 import { getEconomicData } from '@/lib/external-apis/worldbank'
 import { getCrisisNews } from '@/lib/external-apis/news'
 import { generateAIResponseJson } from '@/lib/ai/cerebras'
@@ -27,10 +27,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Fetch external data
+    const location = formatLocationString(profile.city, profile.country)
     const [weatherData, economicData, newsData] = await Promise.all([
-      profile.latitude && profile.longitude
-        ? getWeatherData(profile.latitude, profile.longitude)
-        : null,
+      getWeatherThreatAssessment(location),
       getEconomicData(profile.country),
       getCrisisNews(profile.country)
     ])
@@ -45,9 +44,11 @@ Business Context:
 - Coordinates: ${profile.latitude}, ${profile.longitude}
 
 Current Data Sources:
-1. Weather Forecast: ${JSON.stringify(weatherData)}
-2. Economic Indicators: ${JSON.stringify(economicData)}
-3. Recent News: ${JSON.stringify(newsData)}
+1. Weather Forecast: ${JSON.stringify(weatherData?.forecast)}
+2. Weather Alerts: ${JSON.stringify(weatherData?.alerts)}
+3. Detected Weather Threats: ${JSON.stringify(weatherData?.threats)}
+4. Economic Indicators: ${JSON.stringify(economicData)}
+5. Recent News: ${JSON.stringify(newsData)}
 
 Your task:
 1. Identify potential threats to this business in the next 30 days

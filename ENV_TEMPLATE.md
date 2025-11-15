@@ -18,19 +18,17 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 
-# OpenWeatherMap API
-# Sign up at https://openweathermap.org/api (Free tier: 1,000 calls/day)
-OPENWEATHERMAP_API_KEY=your_openweathermap_api_key_here
+# Weather API (WeatherAPI.com)
+# Sign up at https://www.weatherapi.com (Free tier: 1M calls/month)
+WEATHER_API_KEY=654cc07d55ae4170a9e80158251511
 
 # News API
 # Sign up at https://newsapi.org (Free tier: 100 requests/day)
 NEWS_API_KEY=171c752d73354e63aac5a40aa4cd48ce
 
-# Twilio SMS Alerts
-# Sign up at https://www.twilio.com (Free trial: $15 credit)
-TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
-TWILIO_AUTH_TOKEN=your_twilio_auth_token_here
-TWILIO_PHONE_NUMBER=+1234567890
+# Cerebras AI
+# Get API key from https://cloud.cerebras.ai
+CEREBRAS_API_KEY=your_cerebras_api_key_here
 
 # Pinata IPFS Storage
 # Sign up at https://www.pinata.cloud (Free tier: 1GB storage)

@@ -120,10 +120,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 # Cerebras AI
 CEREBRAS_API_KEY=your_cerebras_api_key
 
-# Optional: Twilio for SMS alerts
-TWILIO_ACCOUNT_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_token
-TWILIO_PHONE_NUMBER=your_twilio_phone
+# Weather API (WeatherAPI.com)
+WEATHER_API_KEY=your_weather_api_key
 ```
 
 4. **Set up the database**
