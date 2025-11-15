@@ -22,7 +22,7 @@ export function getCerebrasClient() {
 
 export async function generateAIResponse(systemPrompt: string, userMessage: string) {
   const cerebras = getCerebrasClient()
-  
+
   const response = await cerebras.chat.completions.create({
     messages: [
       { role: "system", content: systemPrompt },
@@ -33,9 +33,9 @@ export async function generateAIResponse(systemPrompt: string, userMessage: stri
     max_completion_tokens: 65536,
     temperature: 0.6,
     top_p: 0.95
-  })
-  
-  return response.choices[0]?.message?.content.replace(/^[\s\S]*?<\/think>/, '')
+  }) as any
+
+  return response.choices[0]?.message?.content?.replace(/^[\s\S]*?<\/think>/, '') || ''
 }
 
 export async function generateAIResponseJson(systemPrompt: string, userMessage: string) {
