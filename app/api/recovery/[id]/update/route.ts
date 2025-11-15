@@ -23,7 +23,11 @@ export async function PATCH(
       .eq('id', recoveryId)
       .single()
 
-    if (!recovery || recovery.business_profiles.clerk_id !== user.id) {
+    const clerkId = Array.isArray(recovery?.business_profiles)
+      ? recovery.business_profiles[0]?.clerk_id
+      : (recovery?.business_profiles as any)?.clerk_id
+
+    if (!recovery || clerkId !== user.id) {
       return NextResponse.json({ error: 'Recovery not found' }, { status: 404 })
     }
 

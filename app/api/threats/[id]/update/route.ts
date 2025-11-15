@@ -23,7 +23,11 @@ export async function PATCH(
       .eq('id', threatId)
       .single()
 
-    if (!threat || threat.business_profiles.clerk_id !== user.id) {
+    const clerkId = Array.isArray(threat?.business_profiles)
+      ? threat.business_profiles[0]?.clerk_id
+      : (threat?.business_profiles as any)?.clerk_id
+
+    if (!threat || clerkId !== user.id) {
       return NextResponse.json({ error: 'Threat not found' }, { status: 404 })
     }
 
