@@ -216,7 +216,7 @@ export default function AnalyticsDashboard({ businessId }: Props) {
                                 now={analytics.preparednessScore}
                                 variant={getPreparednessColor(analytics.preparednessScore)}
                                 className="mt-2"
-                                size="sm"
+                                style={{ height: '0.5rem' }}
                             />
                         </Card.Body>
                     </Card>
