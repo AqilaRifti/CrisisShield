@@ -45,7 +45,25 @@ export async function POST(request: NextRequest) {
             .order('started_at', { ascending: false })
 
         // Generate report data
-        const report = {
+        const report: {
+            id: string
+            generated_at: string
+            business_name: string
+            report_type: string
+            timeframe_days: number
+            period: { start: string; end: string }
+            summary: {
+                total_threats: number
+                active_threats: number
+                critical_threats: number
+                occurred_crises: number
+                avg_threat_probability: number
+            }
+            threats_by_type: Record<string, number>
+            threats_by_severity: Record<string, number>
+            timeline: any[]
+            recommendations: string[]
+        } = {
             id: `report_${Date.now()}`,
             generated_at: new Date().toISOString(),
             business_name: profile.business_name,
