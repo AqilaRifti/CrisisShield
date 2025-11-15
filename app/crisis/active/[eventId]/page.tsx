@@ -60,6 +60,8 @@ export default function CrisisGuidancePage({ params }: { params: Promise<{ event
       .eq('clerk_id', user?.id)
       .single()
 
+    if (!profile) return
+
     const { data } = await supabase
       .from('crisis_guidance_messages')
       .select('*')
@@ -95,6 +97,11 @@ export default function CrisisGuidancePage({ params }: { params: Promise<{ event
       .select('id')
       .eq('clerk_id', user?.id)
       .single()
+
+    if (!profile) {
+      setLoading(false)
+      return
+    }
 
     const { data: userMsg } = await supabase
       .from('crisis_guidance_messages')
@@ -205,18 +212,17 @@ export default function CrisisGuidancePage({ params }: { params: Promise<{ event
                   <p>Click a quick action below or type your question.</p>
                 </div>
               )}
-              
+
               {messages.map((msg) => (
                 <div
                   key={msg.id}
                   className={`mb-3 d-flex ${msg.role === 'user' ? 'justify-content-end' : 'justify-content-start'}`}
                 >
                   <div
-                    className={`p-3 rounded ${
-                      msg.role === 'user'
-                        ? 'bg-primary text-white'
-                        : 'bg-light'
-                    }`}
+                    className={`p-3 rounded ${msg.role === 'user'
+                      ? 'bg-primary text-white'
+                      : 'bg-light'
+                      }`}
                     style={{ maxWidth: '70%' }}
                   >
                     <p className="mb-0">{msg.content}</p>
@@ -226,13 +232,13 @@ export default function CrisisGuidancePage({ params }: { params: Promise<{ event
                   </div>
                 </div>
               ))}
-              
+
               {loading && (
                 <div className="text-center text-muted">
                   <p>CrisisAI is thinking...</p>
                 </div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </Card.Body>
             <Card.Footer>
