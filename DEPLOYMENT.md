@@ -39,7 +39,7 @@ WEATHER_API_KEY=your_weather_api_key
 
 **Build command:** `npm run build`
 **Publish directory:** `.next`
-**Node version:** 18 or higher
+**Node version:** 20.24.0 or higher (required for Next.js 16)
 
 ### Deployment Steps
 

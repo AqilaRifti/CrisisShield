@@ -83,11 +83,12 @@ CrisisShield provides enterprise-grade crisis management tools accessible to eve
 ## 📦 Installation
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+- Node.js 20.9.0 or higher (required for Next.js 16)
+- npm 10.0.0 or higher
 - Supabase account
 - Clerk account
 - Cerebras API key
+- WeatherAPI.com API key
 
 ### Setup
 

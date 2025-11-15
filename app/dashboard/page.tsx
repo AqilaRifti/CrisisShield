@@ -10,6 +10,8 @@ import RecoveryDashboard from '@/components/RecoveryDashboard'
 import CrisisManagement from '@/components/CrisisManagement'
 import AnalyticsDashboard from '@/components/AnalyticsDashboard'
 import EmergencyPlanManager from '@/components/EmergencyPlanManager'
+import WeatherWidget from '@/components/WeatherWidget'
+import WeatherAlerts from '@/components/WeatherAlerts'
 
 function getSeverityColor(severity: string) {
   switch (severity) {
@@ -145,6 +147,23 @@ export default function DashboardPage() {
         </Col>
 
         <Col md={4}>
+          {/* Weather Alerts */}
+          {profile?.city && profile?.country && (
+            <div className="mb-4">
+              <WeatherAlerts location={`${profile.city}, ${profile.country}`} />
+            </div>
+          )}
+
+          {/* Weather Widget */}
+          {profile?.city && profile?.country && (
+            <div className="mb-4">
+              <WeatherWidget
+                location={`${profile.city}, ${profile.country}`}
+                showForecast={true}
+              />
+            </div>
+          )}
+
           <Card className="shadow-sm mb-4">
             <Card.Header className="bg-primary text-white">
               <h5 className="mb-0">Quick Actions</h5>

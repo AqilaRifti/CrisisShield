@@ -85,6 +85,9 @@ export default function Navigation() {
                     <Badge bg="warning" className="ms-1">{criticalThreats}</Badge>
                   )}
                 </Nav.Link>
+                <Nav.Link as={Link} href="/weather">
+                  Weather
+                </Nav.Link>
                 <Nav.Link as={Link} href="/help">
                   Help
                 </Nav.Link>
